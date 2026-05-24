@@ -1,287 +1,278 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบศิลาจารึกมีชีพ - ปราชญ์ภาษาไทยโบราณ</title>
-    <!-- นำเข้า Tailwind CSS และฟอนต์ไทยโบราณ/ร่วมสมัยเพื่อความวิจิตร -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:wght@300;400;600;700&family=Charmonman:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        stoneBg: '#1c1917',
-                        parchment: '#fcf8f2',
-                        goldLustre: '#d4af37',
-                        thaiCrimson: '#8b0000',
-                        ancientBrown: '#4a2c11',
-                    },
-                    fontFamily: {
-                        thaiScript: ['Charm', 'serif'],
-                        thaiElegant: ['Charmonman', 'serif'],
-                        body: ['Sarabun', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <title>ศิลาจารึกมีชีพ - สุโขทัยแอป</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Sarabun:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        /* สไตล์เสริมสำหรับการไล่ระดับสี ลายขอบทองคำ และแอนิเมชัน */
-        .thai-gold-border {
-            border-image: linear-gradient(to right, #b8860b, #ffd700, #b8860b, #ffd700) 1;
+        /* ธีมศิลาจารึกสีหินชนวน ตัดขอบทองคำแท้สไตล์ไทยโบราณ */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #1a1e21;
+            color: #f1f2f6;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
-        /* สร้างสัมผัสเนื้อแผ่นหินด้วย Overlay ไล่โทน */
-        .stone-texture {
-            background-color: #1e1b18;
-            background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 0);
-            background-size: 32px 32px;
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #2f3640;
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(212,175,55,0.25);
+            box-sizing: border-box;
         }
-
-        .parchment-texture {
-            background-color: #fbf6ee;
-            background-image: 
-                radial-gradient(circle at 100% 150%, #fbf6ee 24%, #f3e9dc 25%, #f3e9dc 28%, transparent 29%),
-                radial-gradient(circle at 0% 150%, #fbf6ee 24%, #f3e9dc 25%, #f3e9dc 28%, transparent 29%);
-            background-size: 20px 20px;
+        h1 {
+            font-family: 'Chakra Petch', sans-serif;
+            color: #d4af37;
+            text-align: center;
+            margin-top: 0;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px #000;
         }
-
-        /* เอฟเฟกต์แสงเทียนสั่นไหว */
-        @keyframes candleFlicker {
-            0%, 100% { opacity: 0.95; transform: scale(1); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6)); }
-            50% { opacity: 0.8; transform: scale(0.98) translateY(1px); filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.8)); }
+        .thai-banner {
+            text-align: center;
+            font-size: 12px;
+            color: #b2bec3;
+            border-bottom: 1px dashed #d4af37;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-        
-        .candle-glow {
-            animation: candleFlicker 3s infinite alternate;
+        .section {
+            background: #212529;
+            border: 1px solid #4b525a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            margin-top: 0;
+            color: #d4af37;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            background: #353b48;
+            color: #fff;
+            border: 1px solid #718093;
+            border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+            resize: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #d4af37, #b38f1d);
+            color: #1a1e21;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: 0.1s;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .result-box {
+            background: #1e272e;
+            border-left: 4px solid #d4af37;
+            padding: 12px;
+            margin-top: 10px;
+            min-height: 40px;
+            border-radius: 0 8px 8px 0;
+            color: #ffdd59;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        /* ระบบควิซ */
+        .quiz-option {
+            background: #353b48;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid #718093;
+            transition: 0.2s;
+        }
+        .quiz-option:active {
+            background: #4b525a;
+        }
+        /* พจนานุกรม */
+        .dict-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .dict-item {
+            background: #353b48;
+            padding: 8px;
+            border-radius: 5px;
+            border-left: 2px solid #d4af37;
         }
     </style>
 </head>
-<body class="stone-texture text-stone-100 min-height-screen font-body selection:bg-goldLustre selection:text-stone-900 pb-12">
+<body>
 
-    <!-- ส่วนตกแต่งหัวเว็บยอดวิจิตร (Header Section) -->
-    <header class="relative pt-12 pb-8 px-4 text-center overflow-hidden border-b border-goldLustre/30">
-        <!-- ภาพประดับพื้นหลังศิลปะไทยโบราณดึงมาจาก Retrieval -->
-        <div class="absolute inset-0 z-0 opacity-15 mix-blend-color-dodge">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/7605627728680806908_0" alt="Thai pattern Background" class="w-full h-full object-cover">
+<div class="container">
+    <h1>🔔 ศิลาจารึกมีชีพ 🔔</h1>
+    <div class="thai-banner">๏ ระบบแปลภาษาและประลองปัญญาปราชญ์สุโขทัย ๏</div>
+
+    <div class="section">
+        <h3>✍️ เครื่องถอดความสุโขทัย (มีเสียงระฆัง)</h3>
+        <textarea id="inputText" placeholder="พิมพ์ข้อความภาษาปัจจุบันที่นี่... (เช่น ฉันรักเธอมากนะ, โทรศัพท์พัง)"></textarea>
+        <button onclick="translateToAncient()">แปลงเป็นศาส์นโบราณ</button>
+        <div class="result-box" id="resultText">จารึกของสูเจ้าจะปรากฏตรงนี้...</div>
+    </div>
+
+    <div class="section">
+        <h3>🎮 ประลองปัญญาปราชญ์ (ควิซตอบคำถาม)</h3>
+        <div id="quiz-container">
+            <p id="quiz-question" style="font-weight: bold; margin-bottom: 10px;"></p>
+            <div id="quiz-options"></div>
+            <div id="quiz-score" style="margin-top: 10px; color: #d4af37; font-weight: bold;"></div>
         </div>
+    </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <!-- ยอดมงกุฎจำลองหรือสัญลักษณ์ประกายทอง -->
-            <div class="flex justify-center mb-3">
-                <div class="w-16 h-16 rounded-full bg-goldLustre/10 border-2 border-goldLustre flex items-center justify-center candle-glow">
-                    <i class="fa-solid fa-scroll text-2xl text-goldLustre"></i>
-                </div>
-            </div>
-            
-            <h1 class="font-thaiScript text-4xl sm:text-6xl text-goldLustre font-bold tracking-wider mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                ระบบศิลาจารึกมีชีพ
-            </h1>
-            <p class="font-thaiScript text-xl sm:text-2xl text-stone-300 italic tracking-wide">
-                “ผู้ถอดคำวจีสมัยใหม่ สู่สัจจะภาษิตโบราณกึ่งพุทธกาลไตรภูมิ”
-            </p>
-            
-            <!-- แผงควบคุมระบบเสียงระฆังและข้อมูลสถานะนักปราชญ์ -->
-            <div class="mt-6 flex flex-wrap justify-center gap-4 text-xs text-stone-400">
-                <button onclick="toggleBellAmbient()" id="bellToggleBtn" class="px-3  py-1.5 rounded-full bg-stone-800 border border-goldLustre/30 hover:border-goldLustre text-goldLustre transition flex items-center gap-2">
-                    <i class="fa-solid fa-bell"></i>
-                    <span>ระบบเสียงระฆังวัดโบราณ: <strong id="bellStatusText" class="text-green-400">เปิดใช้งาน</strong></span>
-                </button>
-                <div class="px-3 py-1.5 rounded-full bg-stone-800 border border-stone-700 flex items-center gap-2">
-                    <i class="fa-solid fa-graduation-cap text-goldLustre"></i>
-                    <span>ยศราชสำนักปัจจุบัน: <strong id="currentRankDisplay" class="text-stone-100">ปราชญ์ผู้ฝึกหัด</strong></span>
-                </div>
-            </div>
+    <div class="section">
+        <h3>📖 ศัพทานุกรมโบราณน่ารู้</h3>
+        <div class="dict-grid">
+            <div class="dict-item"><b>ตู</b> = ฉัน/ผม</div>
+            <div class="dict-item"><b>สู</b> = เธอ/คุณ</div>
+            <div class="dict-item"><b>คลาไคล</b> = เดิน/ไป</div>
+            <div class="dict-item"><b>ทัศนา</b> = ดู/มอง</div>
+            <div class="dict-item"><b>มุสา</b> = โกหก</div>
+            <div class="dict-item"><b>ชนวนทิพย์</b> = มือถือ</div>
         </div>
-    </header>
+    </div>
+</div>
 
-    <!-- แท็บสลับหน้าจอหลัก (Navigation Tabs) -->
-    <nav class="max-w-5xl mx-auto px-4 mt-8 flex justify-center gap-2">
-        <button onclick="switchTab('translate')" id="tab-translate" class="px-5 py-3 rounded-t-lg font-thaiScript text-lg font-bold transition duration-300 border-t-2 border-x border-goldLustre bg-stone-900 text-goldLustre flex items-center gap-2">
-            <i class="fa-solid fa-pen-nib text-sm"></i> ถอดรหัสวจีโบราณ
-        </button>
-        <button onclick="switchTab('dictionary')" id="tab-dictionary" class="px-5 py-3 rounded-t-lg font-thaiScript text-lg font-bold transition duration-300 border-t-2 border-x border-transparent text-stone-400 hover:text-stone-200 flex items-center gap-2">
-            <i class="fa-solid fa-book-open text-sm"></i> สารานุกรมศัพท์ศิลา
-        </button>
-        <button onclick="switchTab('quiz')" id="tab-quiz" class="px-5 py-3 rounded-t-lg font-thaiScript text-lg font-bold transition duration-300 border-t-2 border-x border-transparent text-stone-400 hover:text-stone-200 flex items-center gap-2">
-            <i class="fa-solid fa-gavel text-sm"></i> ลานประลองปัญญา
-        </button>
-    </nav>
+<script>
+    // 1. ระบบเสียงระฆังวัดโบราณ (ใช้ระบบสังเคราะห์เสียง ไม่ต้องพึ่งพาไฟล์นอก ไม่พังแน่นอน)
+    function playBellSound() {
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, ctx.currentTime); // โน้ตเสียงระฆังใสๆ
+            gain.gain.setValueAtTime(0.4, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.0); // เสียงกังวานยาวๆ 2 วินาที
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 2.0);
+        } catch (e) {
+            console.log("Audio not supported yet");
+        }
+    }
 
-    <!-- เนื้อหาแอปพลิเคชันหลัก (Main Content Frame) -->
-    <main class="max-w-5xl mx-auto px-4">
+    // 2. ระบบแปลภาษาโบราณอัจฉริยะทำงานจริง
+    function translateToAncient() {
+        let text = document.getElementById('inputText').value;
+        if (!text.trim()) {
+            document.getElementById('resultText').innerText = "โปรดจารึกข้อความก่อนหนา!";
+            return;
+        }
+
+        // เล่นเสียงระฆังแว่วกังวานเมื่อกดแปล
+        playBellSound();
+
+        // ชุดคำสั่งแปลงภาษาแบบ Real-time
+        const rules = [
+            { req: /ฉัน|ผม|หนู|กู/g, res: 'ตู' },
+            { req: /เธอ|คุณ|มึง|แก/g, res: 'สูเจ้า' },
+            { req: /พวกเรา/g, res: 'พวกตู' },
+            { req: /พวกเธอ|พวกคุณ/g, res: 'พวกสู' },
+            { req: /รัก/g, res: 'ปฏิพัทธ์' },
+            { req: /ไป|เดิน/g, res: 'คลาไคล' },
+            { req: /ดู|มอง/g, res: 'ทัศนา' },
+            { req: /โทรศัพท์|มือถือ/g, res: 'กระดานชนวนทิพย์' },
+            { req: /อินเทอร์เน็ต|เน็ต|เว็บ/g, res: 'ข่ายใยมนตราโบราณ' },
+            { req: /กาก|พัง|ห่วย/g, res: 'มิสู้ดี' },
+            { req: /ครับ|ค่ะ|จ้า|นะ/g, res: 'แล' }
+        ];
+
+        rules.forEach(item => {
+            text = text.replace(item.req, item.res);
+        });
+
+        // เติมสร้อยคำให้ดูขลังแบบสุโขทัย
+        if (!text.endsWith('แล') && !text.endsWith('เทอญ')) {
+            text += ' ยิ่งนักแล';
+        }
+
+        document.getElementById('resultText').innerText = "คำจารึก: " + text;
+    }
+
+    // 3. ระบบเกมควิซทดสอบภูมิปัญญาคำศัพท์
+    const quizData = [
+        { q: "คำว่า 'ตู' ในภาษาโบราณ หมายถึงใคร?", a: ["ฉัน", "เธอ", "หมา"], c: 0 },
+        { q: "หากต้องการชวนเพื่อน 'ไปเที่ยว' ต้องพูดคำใด?", a: ["คลาไคล", "มุสา", "ทัศนา"], c: 0 },
+        { q: "คำว่า 'กระดานชนวนทิพย์' ตรงกับสิ่งใดในปัจจุบัน?", a: ["โทรทัศน์", "สมาร์ตโฟน", "รถยนต์"], c: 1 }
+    ];
+
+    let currentQuiz = 0;
+    let score = 0;
+
+    function loadQuiz() {
+        if (currentQuiz >= quizData.length) {
+            document.getElementById('quiz-container').innerHTML = `<b>🎉 จบการประลอง! ได้คะแนน ${score}/${quizData.length} คะแนน</b><br><button onclick="resetQuiz()">ประลองอีกครั้ง</button>`;
+            return;
+        }
+        const current = quizData[currentQuiz];
+        document.getElementById('quiz-question').innerText = `${currentQuiz + 1}. ${current.q}`;
+        const optionsDiv = document.getElementById('quiz-options');
+        optionsDiv.innerHTML = '';
         
-        <!-- ================= หน้าที่ 1: หน้าถอดความโบราณ ================= -->
-        <section id="page-translate" class="bg-stone-900 border-x border-b border-goldLustre/30 p-4 sm:p-8 rounded-b-xl shadow-2xl">
-            
-            <!-- กล่องแนะนำความรู้ไวๆ -->
-            <div class="mb-6 p-4 rounded-lg bg-ancientBrown/30 border border-goldLustre/20 text-stone-300 text-sm flex items-start gap-3">
-                <i class="fa-solid fa-circle-info text-goldLustre text-lg mt-0.5"></i>
-                <div>
-                    <strong class="text-goldLustre font-thaiScript text-base">โอวาทแห่งจารึกมีชีพ:</strong> 
-                    จงป้อนวจีสมัยปัจจุบันลงในกล่องซ้ายมือ จากนั้นระบบจะใช้กฎอักขระดั้งเดิมก่อนสุโขทัยและบาลีชั้นสูง เพื่อร้อยเรียงแต่งปรุงออกมาเป็นเทหะภาษิตโบราณชั้นสูงที่สุดแล
-                </div>
-            </div>
+        current.a.forEach((opt, index) => {
+            const div = document.createElement('div');
+            div.className = 'quiz-option';
+            div.innerText = opt;
+            div.onclick = () => checkAnswer(index);
+            optionsDiv.appendChild(div);
+        });
+    }
 
-            <!-- กล่องแนะนำข้อความด่วนสำหรับทดลอง (Quick Templates) -->
-            <div class="mb-6">
-                <span class="text-xs text-stone-400 block mb-2 font-semibold tracking-wider"><i class="fa-solid fa-sparkles text-goldLustre"></i> คัดเลือกวลีประดับเพื่อเริ่มทดลองจารึก:</span>
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="applyTemplate('วันนี้อากาศร้อนมาก ฉันไม่อยากออกไปข้างนอก')" class="text-xs bg-stone-800 border border-stone-700 hover:border-goldLustre text-stone-300 hover:text-goldLustre px-3 py-1.5 rounded transition">☀️ วันนี้ร้อน/ขี้เกียจออก</button>
-                    <button onclick="applyTemplate('คุณรักฉันไหม ฉันคิดถึงคุณตลอดเวลา')" class="text-xs bg-stone-800 border border-stone-700 hover:border-goldLustre text-stone-300 hover:text-goldLustre px-3 py-1.5 rounded transition">💖 ถามหาเสน่หาปฏิพัทธ์</button>
-                    <button onclick="applyTemplate('เหนื่อยจังเลย อยากนอนพักผ่อนแล้ว')" class="text-xs bg-stone-800 border border-stone-700 hover:border-goldLustre text-stone-300 hover:text-goldLustre px-3 py-1.5 rounded transition">💤 เหนื่อยอยากนิทรา</button>
-                    <button onclick="applyTemplate('คอมพิวเตอร์และโทรศัพท์เป็นสิ่งสำคัญในการทำงานของเพื่อนผม')" class="text-xs bg-stone-800 border border-stone-700 hover:border-goldLustre text-stone-300 hover:text-goldLustre px-3 py-1.5 rounded transition">💻 เครื่องมือไอทีสมัยใหม่</button>
-                </div>
-            </div>
+    function checkAnswer(index) {
+        if (index === quizData[currentQuiz].c) {
+            score++;
+            alert("ถูกต้องแล้วสูเจ้า! เก่งยิ่งนัก");
+        } else {
+            alert("หามิได้! คำตอบนั้นยังไม่ถูก");
+        }
+        currentQuiz++;
+        loadQuiz();
+    }
 
-            <!-- พื้นที่กรอกและแปลงคำแบบสองฝั่ง -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                
-                <!-- ฝั่งซ้าย: วจีสมัยใหม่ -->
-                <div class="flex flex-col gap-2">
-                    <label class="text-goldLustre font-thaiScript text-xl flex items-center gap-2">
-                        <i class="fa-solid fa-keyboard text-sm text-stone-400"></i> วจีสมัยใหม่
-                    </label>
-                    <div class="relative">
-                        <textarea id="inputText" class="w-full h-64 p-4 rounded-lg bg-stone-950 border border-stone-700 text-stone-100 placeholder:text-stone-600 focus:outline-none focus:border-goldLustre focus:ring-1 focus:ring-goldLustre font-body leading-relaxed text-base" placeholder="จงพิมพ์วจีสมัยใหม่ตรงนี้... เช่น 'วันนี้ฉันง่วงจัง อยากกลับบ้านไปนอน'"></textarea>
-                        <button onclick="clearInput()" class="absolute bottom-3 right-3 text-stone-500 hover:text-stone-300 transition text-sm flex items-center gap-1 bg-stone-900 px-2 py-1 rounded border border-stone-800">
-                            <i class="fa-solid fa-eraser"></i> ล้างข้อมูล
-                        </button>
-                    </div>
-                </div>
+    function resetQuiz() {
+        currentQuiz = 0;
+        score = 0;
+        document.getElementById('quiz-container').innerHTML = `<p id="quiz-question" style="font-weight: bold; margin-bottom: 10px;"></p><div id="quiz-options"></div><div id="quiz-score" style="margin-top: 10px; color: #d4af37; font-weight: bold;"></div>`;
+        loadQuiz();
+    }
 
-                <!-- ฝั่งขวา: ศิลาจารึก (เอาท์พุตโบราณวิจิตร) -->
-                <div class="flex flex-col gap-2">
-                    <label class="text-goldLustre font-thaiScript text-xl flex items-center justify-between">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-feather-pointed text-sm text-goldLustre"></i> ศาส์นจากหลักจารึก</span>
-                        <span id="translatingIndicator" class="text-xs text-stone-500 animate-pulse hidden">กำลังลงจารึก...</span>
-                    </label>
-                    
-                    <div class="relative w-full h-64 rounded-lg parchment-texture border-2 border-goldLustre p-6 text-stone-900 overflow-y-auto shadow-inner flex flex-col justify-between">
-                        <!-- เอฟเฟกต์ลายน้ำโบราณเบาๆ -->
-                        <div class="absolute inset-0 opacity-5 pointer-events-none mix-blend-multiply bg-cover" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/11132642072490608213_0');"></div>
-                        
-                        <div class="relative z-10">
-                            <p id="outputText" class="font-thaiScript text-2xl font-bold leading-relaxed text-ancientBrown tracking-wide">
-                                อันว่าศาส์นจารึกจักสถิตแสดง ณ ฝั่งภพนี้ เมื่อสูท่านลั่นถ้อยคำทำนายด้านซ้ายแล...
-                            </p>
-                        </div>
-                        
-                        <!-- ยี่ห้อของจารึกด้านล่างแผ่นพับ -->
-                        <div class="relative z-10 border-t border-ancientBrown/15 pt-2 mt-4 flex items-center justify-between text-xs text-ancientBrown/70 font-semibold">
-                            <span>📜 อักขระก่อนยุคสุโขทัย</span>
-                            <span id="wordCountLabel">๐ พยางค์เทหะ</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    // เริ่มต้นทำงานควิซเมื่อโหลดหน้าเว็บ
+    loadQuiz();
+</script>
 
-            <!-- ส่วนควบคุมเพิ่มเติมด้านโครงสร้างวรรคตอน -->
-            <div class="mt-6 p-4 rounded-lg bg-stone-950 border border-stone-800">
-                <h4 class="text-xs font-semibold text-stone-400 mb-3 tracking-wider"><i class="fa-solid fa-sliders text-goldLustre"></i> ปรับแต่งตัวกรองและสร้อยอักขระโบราณ:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                        <label class="text-xs text-stone-400 block mb-1">คำนำประโยค (Prefix)</label>
-                        <select id="prefixSelect" onchange="processTranslation()" class="w-full bg-stone-900 border border-stone-700 rounded p-1.5 text-xs text-goldLustre focus:outline-none focus:border-goldLustre">
-                            <option value="อันว่า">อันว่า... (แนะนำสำหรับจารึก)</option>
-                            <option value="ยังมี">ยังมี... (สำหรับแนวนิทาน/ไตรภูมิ)</option>
-                            <option value="ครั้งนั้น">ครั้งนั้น... (พงศาวดารศึก)</option>
-                            <option value="">(ไม่มีคำนำหน้า)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-xs text-stone-400 block mb-1">คำสร้อยลงท้าย (Suffix)</label>
-                        <select id="suffixSelect" onchange="processTranslation()" class="w-full bg-stone-900 border border-stone-700 rounded p-1.5 text-xs text-goldLustre focus:outline-none focus:border-goldLustre">
-                            <option value="แล">...แล (คลาสสิกดั้งเดิม)</option>
-                            <option value="เทอญ">...เทอญ (อธิษฐานจิต)</option>
-                            <option value="นั้นหนา แล">...นั้นหนา แล (เน้นความหมายมั่น)</option>
-                            <option value="">(ไม่มีคำลงท้าย)</option>
-                        </select>
-                    </div>
-                    <div class="flex items-end">
-                        <label class="flex items-center gap-2 cursor-pointer text-xs text-stone-300 hover:text-white transition">
-                            <input type="checkbox" id="paliConvertCheck" checked onchange="processTranslation()" class="accent-goldLustre w-4 h-4 rounded">
-                            <span>เปิดใช้งานคำบาลี-สันสกฤตขั้นสูง</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- กลุ่มปุ่มการกระทำใหญ่ๆ (Actions) -->
-            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
-                <button onclick="executeTranslationAction()" class="w-full sm:w-auto px-8 py-3.5 rounded-lg bg-goldLustre text-stone-950 font-thaiScript text-2xl font-bold hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-[0_4px_15px_rgba(212,175,55,0.4)] flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-feather-pointed"></i> ประกาศจารึกสัจจะวาจา
-                </button>
-                <div class="flex gap-2 w-full sm:w-auto">
-                    <button onclick="copyToClipboard()" class="flex-1 sm:flex-none px-4 py-3 rounded-lg bg-stone-800 border border-stone-700 hover:border-goldLustre text-stone-300 hover:text-goldLustre transition flex items-center justify-center gap-2 text-sm font-semibold">
-                        <i class="fa-regular fa-copy"></i> คัดลอกศาส์น
-                    </button>
-                    <button onclick="simulateStoneCarvingExport()" class="flex-1 sm:flex-none px-4 py-3 rounded-lg bg-stone-800 border border-stone-700 hover:border-goldLustre text-stone-300 hover:text-goldLustre transition flex items-center justify-center gap-2 text-sm font-semibold">
-                        <i class="fa-solid fa-gem"></i> สลักลงแผ่นหิน
-                    </button>
-                </div>
-            </div>
-
-            <!-- กล่องแจกแจงวิเคราะห์คำแปลคำศัพท์เพื่อการเรียนรู้ -->
-            <div id="wordAnalysisContainer" class="mt-8 p-4 rounded-lg bg-stone-950 border border-stone-800 hidden">
-                <h3 class="font-thaiScript text-lg text-goldLustre mb-3 border-b border-stone-800 pb-2"><i class="fa-solid fa-magnifying-glass-chart"></i> ไขปริศนาอักขราวิเคราะห์ทีละศัพท์</h3>
-                <div id="wordAnalysisList" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-stone-300">
-                    <!-- จะเติมเนื้อหาด้วย JS -->
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- ================= หน้าที่ 2: สารานุกรมคำศัพท์โบราณ ================= -->
-        <section id="page-dictionary" class="bg-stone-900 border-x border-b border-goldLustre/30 p-4 sm:p-8 rounded-b-xl shadow-2xl hidden">
-            
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-stone-800">
-                <div>
-                    <h2 class="font-thaiScript text-3xl text-goldLustre">พระคัมภีร์สรรพคำศัพท์โบราณ</h2>
-                    <p class="text-sm text-stone-400">ค้นพบคลังศัพท์ก่อนสุโขทัยและบาลีสันสกฤตชั้นสูงสะกดใจ</p>
-                </div>
-                <!-- ค้นหาคำศัพท์ -->
-                <div class="relative w-full md:w-72">
-                    <input type="text" id="dicSearchInput" onkeyup="filterDictionary()" placeholder="ค้นหาคำโบราณหรือคำปัจจุบัน..." class="w-full bg-stone-950 border border-stone-700 rounded-lg py-2 pl-3 pr-10 text-stone-100 placeholder:text-stone-600 focus:outline-none focus:border-goldLustre text-sm">
-                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-stone-500 text-sm"></i>
-                </div>
-            </div>
-
-            <!-- ตัวกรองตามหมวดหมู่ -->
-            <div class="flex flex-wrap gap-2 mb-6">
-                <button onclick="filterDicCategory('all')" id="cat-all" class="text-xs px-3 py-1.5 rounded-full bg-goldLustre text-stone-950 font-bold transition">ทั้งหมด</button>
-                <button onclick="filterDicCategory('pronoun')" id="cat-pronoun" class="text-xs px-3 py-1.5 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition">หมวดสรรพนาม</button>
-                <button onclick="filterDicCategory('mindbody')" id="cat-mindbody" class="text-xs px-3 py-1.5 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition">หมวดสรีระและจิตใจ</button>
-                <button onclick="filterDicCategory('nature')" id="cat-nature" class="text-xs px-3 py-1.5 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition">หมวดคคนานต์และดลธรรมชาติ</button>
-                <button onclick="filterDicCategory('verb')" id="cat-verb" class="text-xs px-3 py-1.5 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition">หมวดอากัปกิริยา</button>
-                <button onclick="filterDicCategory('technology')" id="cat-technology" class="text-xs px-3 py-1.5 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition">หมวดยันตรายุคใหม่ (เทคโนโลยี)</button>
-            </div>
-
-            <!-- ตารางแสดงคำศัพท์วิจิตร -->
-            <div class="overflow-x-auto rounded-lg border border-stone-800">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-stone-950 text-goldLustre font-thaiScript text-lg border-b border-stone-800">
-                            <th class="p-4">คำโบราณ/บาลีชั้นสูง</th>
-                            <th class="p-4">คำแปลสามัญปัจจุบัน</th>
-                            <th class="p-4">ประเภท/หมวดหมู่</th>
-                            <th class="p-4">คำแนะนำการหยิบใช้ประกอบธรรม</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dicTableBody" class="text-stone-300 text-sm divide-y divide-stone-800/50">
-                        <!-- คำตอบจะถูกสร้างไดนามิกส์ด้วย JS -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div id="dicNoResult" class="py-12 text-center text-stone-500 hidden">
-                <i class="fa-solid fa-scroll-torah text-4xl mb-3 block">
+</body>
+</html>
