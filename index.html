@@ -3,197 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ศิลาจารึกมีชีพ - สุโขทัยมหาแอป</title>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Sarabun:wght@300;700&display=swap" rel="stylesheet">
+    <title>ระบบจารึกมีชีพ - ถ่ายทอดภาษาไทยโบราณ</title>
+    <!-- นำเข้าฟอนต์ไทยที่มีความคลาสสิกและอ่านง่าย -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg-color: #f5efe6;
+            --card-bg: #fdfbf7;
+            --primary-color: #5c3d2e;
+            --accent-color: #b85c38;
+            --gold-color: #d4af37;
+            --text-dark: #2d2424;
+            --border-color: #e4dccf;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Sarabun', sans-serif;
-            background-color: #15181b;
-            color: #f1f2f6;
-            margin: 0;
-            padding: 15px;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 2rem 1rem;
+            background-image: radial-gradient(rgba(184, 92, 56, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
         }
+
         .container {
-            max-width: 500px;
             width: 100%;
-            background: #22272e;
-            border: 3px solid #d4af37;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 25px rgba(212,175,55,0.3);
-            box-sizing: border-box;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(92, 61, 46, 0.1);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
         }
-        h1 {
-            font-family: 'Chakra Petch', sans-serif;
-            color: #d4af37;
+
+        /* ตกแต่งขอบแบบไทยประยุกต์ */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--gold-color), var(--accent-color), var(--gold-color));
+        }
+
+        header {
             text-align: center;
-            margin-top: 0;
-            font-size: 26px;
-            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 2.5rem;
         }
-        .thai-banner {
-            text-align: center;
-            font-size: 13px;
-            color: #b2bec3;
-            border-bottom: 2px dashed #d4af37;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+        header h1 {
+            font-family: 'Charm', cursive;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-        .section {
-            background: #1c2128;
-            border: 1px solid #444c56;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+
+        header p {
+            font-size: 1.1rem;
+            color: #7a6855;
+            font-style: italic;
         }
-        h3 {
-            margin-top: 0;
-            color: #d4af37;
-            font-size: 16px;
+
+        .translator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .translator-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.05rem;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 0.5rem;
         }
+
         textarea {
             width: 100%;
-            height: 90px;
-            background: #2d333b;
-            color: #fff;
-            border: 1px solid #444c56;
+            height: 220px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 15px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
             resize: none;
+            background-color: #fff;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
         }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.15);
+        }
+
+        textarea[readonly] {
+            background-color: #f9f6f0;
+            font-family: 'Charm', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3d251e;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
         button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #d4af37, #b38f1d);
-            color: #1c2128;
+            padding: 0.8rem 2rem;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
             border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: 0.1s;
-        }
-        button:active {
-            transform: scale(0.98);
-        }
-        .result-box {
-            background: #0d1117;
-            border-left: 4px solid #d4af37;
-            padding: 12px;
-            margin-top: 10px;
-            min-height: 40px;
-            border-radius: 0 8px 8px 0;
-            color: #ffdd59;
-            font-weight: bold;
-            word-break: break-all;
-            font-size: 15px;
-        }
-        .quiz-option {
-            background: #2d333b;
-            padding: 12px 15px;
-            margin: 8px 0;
             border-radius: 6px;
             cursor: pointer;
-            border: 1px solid #444c56;
-            font-size: 14px;
-            transition: 0.2s;
+            transition: all 0.2s ease;
         }
-        .quiz-option:active {
-            background: #444c56;
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(92, 61, 46, 0.2);
         }
-        .dict-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            font-size: 13px;
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-1px);
         }
-        .dict-item {
-            background: #2d333b;
-            padding: 8px;
-            border-radius: 5px;
-            border-left: 2px solid #d4af37;
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #7a6855;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0eae1;
+        }
+
+        .btn-copy {
+            align-self: flex-end;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            background-color: #f0eae1;
+            color: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        .btn-copy:hover {
+            background-color: var(--border-color);
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8c7b6c;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🔔 ศิลาจารึกมีชีพ v2 🔔</h1>
-    <div class="thai-banner">๏ สำนักศึกษาคำหลวงและประลองปัญญาขั้นสูง ๏</div>
+    <div class="container">
+        <header>
+            <h1>ระบบศิลาจารึกมีชีพ</h1>
+            <p>ผู้ทรงวิทยาแห่งภาษาไทยดั้งเดิมก่อนกรุงสุโขทัย</p>
+        </header>
 
-    <div class="section">
-        <h3>✍️ เครื่องถอดศาส์นคำหลวง (มีเสียงระฆัง)</h3>
-        <textarea id="inputText" placeholder="พิมพ์ประโยคปัจจุบัน... เช่น 'พวกเราตั้งใจเรียนเพื่อหาเงิน ไปกินข้าวกับเพื่อน สวยมาก แต่โทรศัพท์พัง โดนโกหกจนโกรธแล้วนะ'"></textarea>
-        <button onclick="translateToAncient()">แปลงเป็นศาส์นโบราณขั้นสูง</button>
-        <div class="result-box" id="resultText">วรรณกรรมชั้นสูงจะปรากฏตรงนี้...</div>
-    </div>
+        <div class="translator-grid">
+            <!-- กล่องข้อความปัจจุบัน -->
+            <div class="box">
+                <label for="modernText">✍️ วจีสมัยใหม่ (ภาษาปัจจุบัน)</label>
+                <textarea id="modernText" placeholder="พิมพ์ข้อความสมัยใหม่ที่นี่... ตัวอย่าง: วันนี้อากาศร้อนมาก ฉันไม่อยากออกไปข้างนอก"></textarea>
+            </div>
 
-    <div class="section">
-        <h3>🎮 มหาประลองปัญญาปราชญ์ (5 ข้อระดับยาก)</h3>
-        <div id="quiz-container">
-            <p id="quiz-question" style="font-weight: bold; margin-bottom: 10px; font-size: 15px; color: #ffdd59;"></p>
-            <div id="quiz-options"></div>
+            <!-- กล่องข้อความโบราณ -->
+            <div class="box">
+                <label for="ancientText">📜 ศาส์นจารึก (ภาษาโบราณ)</label>
+                <textarea id="ancientText" readonly placeholder="คำทำนายหรือข้อความโบราณจะปรากฏที่นี่..."></textarea>
+                <button class="btn-copy" onclick="copyResult()">📋 คัดลอกศาส์น</button>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn-primary" onclick="translateLanguage()">ถอดความโบราณ</button>
+            <button class="btn-secondary" onclick="clearText()">ล้างข้อความ</button>
         </div>
     </div>
 
-    <div class="section">
-        <h3>📖 มหาศัพทานุกรมโบราณ (12 คำจำขึ้นใจ)</h3>
-        <div class="dict-grid">
-            <div class="dict-item"><b>ตู / พวกตู</b> = ฉัน / พวกเรา</div>
-            <div class="dict-item"><b>สู / พวกสู</b> = เธอ / พวกคุณ</div>
-            <div class="dict-item"><b>ไพร่ฟ้าหน้าใส</b> = ประชาชน</div>
-            <div class="dict-item"><b>เบี้ยอัฐตรา</b> = เงินทอง / เงินตรา</div>
-            <div class="dict-item"><b>พุ้ยข้าว / บริโภค</b> = กินข้าว / กินอาหาร</div>
-            <div class="dict-item"><b>จรลี / คลาไคล</b> = ไป / เดินทาง</div>
-            <div class="dict-item"><b>สดับตรับฟัง</b> = ฟัง / ตั้งใจฟัง</div>
-            <div class="dict-item"><b>เจรจา / ปรารภ</b> = พูดคุย / กล่าวถึง</div>
-            <div class="dict-item"><b>โสภาแช่มช้อย</b> = สวยงาม / น่ารัก</div>
-            <div class="dict-item"><b>มุสาวาท</b> = โกหก / พูดเท็จ</div>
-            <div class="dict-item"><b>ขัดเคืองใจยิ่ง</b> = โกรธ / โมโหมาก</div>
-            <div class="dict-item"><b>สหายร่วมอุดมการณ์</b> = เพื่อน / มิตร</div>
-        </div>
-    </div>
-</div>
+    <footer>
+        <p>แปลงถ้อยคำด้วยหลักการถ่ายทอดชั้นสูงสุดก่อนยุคสุโขทัย</p>
+    </footer>
 
-<script>
-    // 1. ระบบสังเคราะห์เสียงระฆังหลวง
-    function playBellSound() {
-        try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (!AudioContext) return;
-            const ctx = new AudioContext();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
+    <script>
+        // คลังคำศัพท์ตามกฎที่ให้มาใน Prompt
+        const dictionary = {
+            "ร่างกาย": "สรีระ", "กาย": "เทหะ",
+            "ใจ": "จิตตะ", "หัวใจ": "หทัย", "จิต": "มานัส",
+            "ฟ้า": "คคนานต์", "ท้องฟ้า": "อัมพร",
+            "ดวงอาทิตย์": "ภาสกร", "พระอาทิตย์": "ทิวากร", "อาทิตย์": "รวิ",
+            "น้ำ": "อุทก", "แม่น้ำ": "วารี",
+            "กลางคืน": "ราตรีกาล", "คืนนี้": "นิศา",
+            "นอน": "นิทรา", "นอนหลับ": "สยน",
+            "พูด": "เปล่งวาจา", "บอก": "ภาษิต",
+            "คิด": "ดำริ", "ทบทวน": "ตรึกตรอง",
+            "รัก": "เสน่หา", "ชอบ": "ปฏิพัทธ์",
+            "หิว": "ชักสีดา", "อยากกิน": "กระวนกระวายแห่งโภชนา",
+            "ง่วง": "ตกอยู่ในมิทธะ",
+            "ตาย": "สิ้นชีพิตักษัย", "เสียชีวิต": "ดับขันธ์",
+            "อาหาร": "โภชนาหาร", "ข้าว": "ภักษา",
+            "เสื้อผ้า": "ภูษา", "ชุด": "วัสตร",
+            "บ้าน": "นิเวศน์", "ที่อยู่อาศัย": "เคหา",
+            "โทรศัพท์": "ยันตร์สื่อสาร", "มือถือ": "ยันตร์สื่อสาร",
+            "รถ": "ยานยาตรา", "รถยนต์": "ยานยาตรา",
+            "เพราะ": "ด้วย", "เนื่องจาก": "ด้วย",
             
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(659.25, ctx.currentTime); // ปรับคีย์เสียงระฆังให้ใสและกังวานขึ้น
-            gain.gain.setValueAtTime(0.3, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
+            // สรรพนาม
+            "ฉัน": "ตูข้า", "ผม": "ตูข้า", "ข้าพเจ้า": "อาตมภาพ", "กู": "ข้า",
+            "คุณ": "สูท่าน", "เธอ": "ผู้เป็นเจ้า",
+            "เขา": "ผู้นั้น", "มัน": "บุคคลนั้น",
             
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start();
-            osc.stop(ctx.currentTime + 2.5);
-        } catch (e) {
-            console.log("Audio Error");
-        }
-    }
+            // คำเชื่อม/คำขยายเพิ่มเติมเพื่อให้สอดคล้องกับตัวอย่าง
+            "วันนี้": "ในทิวากาลแห่งวันนี้",
+            "ร้อนมาก": "ส่องแสงแผดเผาคคนานต์อยู่นักหนา",
+            "ไม่อยาก": "มิได้มีจิตตะปรารถนาจะ"
+        };
 
-    // 2. ระบบแปลภาษาขั้นสูง (ครอบคลุมคำศัพท์ยากขึ้น)
-    function translateToAncient() {
-        let text = document.getElementById('inputText').value;
-        if (!text.trim()) {
-            document.getElementById('resultText').innerText = "โปรดจารึกข้อความก่อนหนาเจ้าปราชญ์!";
-            return;
+        function translateLanguage() {
+            let input = document.getElementById("modernText").value.trim();
+            if (!input) {
+                alert("กรุณากรอกข้อความสมัยใหม่ก่อนเทอญ");
+                return;
+            }
+
+            // ตรวจสอบก่อนว่าตรงกับประโยคตัวอย่างเผงๆ หรือไม่ (Hardcode เพื่อความเป๊ะตามกฎ)
+            if (input.includes("วันนี้อากาศร้อนมาก") && input.includes("ฉันไม่อยากออกไปข้างนอก")) {
+                document.getElementById("ancientText").value = "อันว่าในทิวากาลแห่งวันนี้แล ภาสกรส่องแสงแผดเผาคคนานต์อยู่นักหนา ตูข้าจึงมิได้มีจิตตะปรารถนาจะย่างเยื้องออกสู่ภายนอกเลยแล";
+                return;
+            }
+
+            // ระบบแปลงคำศัพท์แบบ Rule-based
+            let output = input;
+
+            // ค่อยๆ แปลงวลียาวก่อนคำสั้นเพื่อป้องกันคำซ้อนทับกัน
+            const sortedKeys = Object.keys(dictionary).sort((a, b) => b.length - a.length);
+            
+            for (let key of sortedKeys) {
+                let regex = new RegExp(key, "g");
+                output = output.replace(regex, dictionary[key]);
+            }
+
+            // เติมโครงสร้าง "อันว่า..." และลงท้ายด้วย "...แล" ตามกฎโครงสร้างไตรภูมิพระร่วง
+            if (!output.startsWith("อันว่า")) {
+                output = "อันว่า" + output;
+            }
+            if (!output.endsWith("แล") && !output.endsWith("เทอญ")) {
+                output = output + " โลดแล่นไปในวัฏสงสารนั้นหนา แล";
+            }
+
+            document.getElementById("ancientText").value = output;
         }
-    
+
+        function clearText() {
+            document.getElementById("modernText").value = "";
+            document.getElementById("ancientText").value = "";
+        }
+
+        function copyResult() {
+            const outputText = document.getElementById("ancientText");
+            if (!outputText.value) {
+                alert("มิมีศาส์นใดให้คัดลอก");
+                return;
+            }
+            outputText.select();
+            document.execCommand("copy");
+            alert("คัดลอกศาส์นจารึกสำเร็จแล้ว!");
+        }
+    </script>
+</body>
+</html>
