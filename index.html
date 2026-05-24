@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ศิลาจารึกมีชีพ - สุโขทัยแอป</title>
+    <title>ศิลาจารึกมีชีพ - สุโขทัยมหาแอป</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Sarabun:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        /* ธีมศิลาจารึกสีหินชนวน ตัดขอบทองคำแท้สไตล์ไทยโบราณ */
         body {
             font-family: 'Sarabun', sans-serif;
-            background-color: #1a1e21;
+            background-color: #15181b;
             color: #f1f2f6;
             margin: 0;
             padding: 15px;
@@ -20,11 +19,11 @@
         .container {
             max-width: 500px;
             width: 100%;
-            background: #2f3640;
+            background: #22272e;
             border: 3px solid #d4af37;
             border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 0 20px rgba(212,175,55,0.25);
+            box-shadow: 0 0 25px rgba(212,175,55,0.3);
             box-sizing: border-box;
         }
         h1 {
@@ -32,20 +31,20 @@
             color: #d4af37;
             text-align: center;
             margin-top: 0;
-            font-size: 24px;
+            font-size: 26px;
             text-shadow: 2px 2px 4px #000;
         }
         .thai-banner {
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: #b2bec3;
-            border-bottom: 1px dashed #d4af37;
+            border-bottom: 2px dashed #d4af37;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
         .section {
-            background: #212529;
-            border: 1px solid #4b525a;
+            background: #1c2128;
+            border: 1px solid #444c56;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -60,10 +59,10 @@
         }
         textarea {
             width: 100%;
-            height: 80px;
-            background: #353b48;
+            height: 90px;
+            background: #2d333b;
             color: #fff;
-            border: 1px solid #718093;
+            border: 1px solid #444c56;
             border-radius: 8px;
             padding: 10px;
             box-sizing: border-box;
@@ -74,21 +73,21 @@
             width: 100%;
             padding: 12px;
             background: linear-gradient(135deg, #d4af37, #b38f1d);
-            color: #1a1e21;
+            color: #1c2128;
             border: none;
             border-radius: 8px;
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
             margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             transition: 0.1s;
         }
         button:active {
             transform: scale(0.98);
         }
         .result-box {
-            background: #1e272e;
+            background: #0d1117;
             border-left: 4px solid #d4af37;
             padding: 12px;
             margin-top: 10px;
@@ -97,29 +96,29 @@
             color: #ffdd59;
             font-weight: bold;
             word-break: break-all;
+            font-size: 15px;
         }
-        /* ระบบควิซ */
         .quiz-option {
-            background: #353b48;
-            padding: 10px 15px;
+            background: #2d333b;
+            padding: 12px 15px;
             margin: 8px 0;
             border-radius: 6px;
             cursor: pointer;
-            border: 1px solid #718093;
+            border: 1px solid #444c56;
+            font-size: 14px;
             transition: 0.2s;
         }
         .quiz-option:active {
-            background: #4b525a;
+            background: #444c56;
         }
-        /* พจนานุกรม */
         .dict-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
-            font-size: 14px;
+            font-size: 13px;
         }
         .dict-item {
-            background: #353b48;
+            background: #2d333b;
             padding: 8px;
             border-radius: 5px;
             border-left: 2px solid #d4af37;
@@ -129,40 +128,45 @@
 <body>
 
 <div class="container">
-    <h1>🔔 ศิลาจารึกมีชีพ 🔔</h1>
-    <div class="thai-banner">๏ ระบบแปลภาษาและประลองปัญญาปราชญ์สุโขทัย ๏</div>
+    <h1>🔔 ศิลาจารึกมีชีพ v2 🔔</h1>
+    <div class="thai-banner">๏ สำนักศึกษาคำหลวงและประลองปัญญาขั้นสูง ๏</div>
 
     <div class="section">
-        <h3>✍️ เครื่องถอดความสุโขทัย (มีเสียงระฆัง)</h3>
-        <textarea id="inputText" placeholder="พิมพ์ข้อความภาษาปัจจุบันที่นี่... (เช่น ฉันรักเธอมากนะ, โทรศัพท์พัง)"></textarea>
-        <button onclick="translateToAncient()">แปลงเป็นศาส์นโบราณ</button>
-        <div class="result-box" id="resultText">จารึกของสูเจ้าจะปรากฏตรงนี้...</div>
+        <h3>✍️ เครื่องถอดศาส์นคำหลวง (มีเสียงระฆัง)</h3>
+        <textarea id="inputText" placeholder="พิมพ์ประโยคปัจจุบัน... เช่น 'พวกเราตั้งใจเรียนเพื่อหาเงิน ไปกินข้าวกับเพื่อน สวยมาก แต่โทรศัพท์พัง โดนโกหกจนโกรธแล้วนะ'"></textarea>
+        <button onclick="translateToAncient()">แปลงเป็นศาส์นโบราณขั้นสูง</button>
+        <div class="result-box" id="resultText">วรรณกรรมชั้นสูงจะปรากฏตรงนี้...</div>
     </div>
 
     <div class="section">
-        <h3>🎮 ประลองปัญญาปราชญ์ (ควิซตอบคำถาม)</h3>
+        <h3>🎮 มหาประลองปัญญาปราชญ์ (5 ข้อระดับยาก)</h3>
         <div id="quiz-container">
-            <p id="quiz-question" style="font-weight: bold; margin-bottom: 10px;"></p>
+            <p id="quiz-question" style="font-weight: bold; margin-bottom: 10px; font-size: 15px; color: #ffdd59;"></p>
             <div id="quiz-options"></div>
-            <div id="quiz-score" style="margin-top: 10px; color: #d4af37; font-weight: bold;"></div>
         </div>
     </div>
 
     <div class="section">
-        <h3>📖 ศัพทานุกรมโบราณน่ารู้</h3>
+        <h3>📖 มหาศัพทานุกรมโบราณ (12 คำจำขึ้นใจ)</h3>
         <div class="dict-grid">
-            <div class="dict-item"><b>ตู</b> = ฉัน/ผม</div>
-            <div class="dict-item"><b>สู</b> = เธอ/คุณ</div>
-            <div class="dict-item"><b>คลาไคล</b> = เดิน/ไป</div>
-            <div class="dict-item"><b>ทัศนา</b> = ดู/มอง</div>
-            <div class="dict-item"><b>มุสา</b> = โกหก</div>
-            <div class="dict-item"><b>ชนวนทิพย์</b> = มือถือ</div>
+            <div class="dict-item"><b>ตู / พวกตู</b> = ฉัน / พวกเรา</div>
+            <div class="dict-item"><b>สู / พวกสู</b> = เธอ / พวกคุณ</div>
+            <div class="dict-item"><b>ไพร่ฟ้าหน้าใส</b> = ประชาชน</div>
+            <div class="dict-item"><b>เบี้ยอัฐตรา</b> = เงินทอง / เงินตรา</div>
+            <div class="dict-item"><b>พุ้ยข้าว / บริโภค</b> = กินข้าว / กินอาหาร</div>
+            <div class="dict-item"><b>จรลี / คลาไคล</b> = ไป / เดินทาง</div>
+            <div class="dict-item"><b>สดับตรับฟัง</b> = ฟัง / ตั้งใจฟัง</div>
+            <div class="dict-item"><b>เจรจา / ปรารภ</b> = พูดคุย / กล่าวถึง</div>
+            <div class="dict-item"><b>โสภาแช่มช้อย</b> = สวยงาม / น่ารัก</div>
+            <div class="dict-item"><b>มุสาวาท</b> = โกหก / พูดเท็จ</div>
+            <div class="dict-item"><b>ขัดเคืองใจยิ่ง</b> = โกรธ / โมโหมาก</div>
+            <div class="dict-item"><b>สหายร่วมอุดมการณ์</b> = เพื่อน / มิตร</div>
         </div>
     </div>
 </div>
 
 <script>
-    // 1. ระบบเสียงระฆังวัดโบราณ (ใช้ระบบสังเคราะห์เสียง ไม่ต้องพึ่งพาไฟล์นอก ไม่พังแน่นอน)
+    // 1. ระบบสังเคราะห์เสียงระฆังหลวง
     function playBellSound() {
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -172,107 +176,24 @@
             const gain = ctx.createGain();
             
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(587.33, ctx.currentTime); // โน้ตเสียงระฆังใสๆ
-            gain.gain.setValueAtTime(0.4, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.0); // เสียงกังวานยาวๆ 2 วินาที
+            osc.frequency.setValueAtTime(659.25, ctx.currentTime); // ปรับคีย์เสียงระฆังให้ใสและกังวานขึ้น
+            gain.gain.setValueAtTime(0.3, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
             
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.start();
-            osc.stop(ctx.currentTime + 2.0);
+            osc.stop(ctx.currentTime + 2.5);
         } catch (e) {
-            console.log("Audio not supported yet");
+            console.log("Audio Error");
         }
     }
 
-    // 2. ระบบแปลภาษาโบราณอัจฉริยะทำงานจริง
+    // 2. ระบบแปลภาษาขั้นสูง (ครอบคลุมคำศัพท์ยากขึ้น)
     function translateToAncient() {
         let text = document.getElementById('inputText').value;
         if (!text.trim()) {
-            document.getElementById('resultText').innerText = "โปรดจารึกข้อความก่อนหนา!";
+            document.getElementById('resultText').innerText = "โปรดจารึกข้อความก่อนหนาเจ้าปราชญ์!";
             return;
         }
-
-        // เล่นเสียงระฆังแว่วกังวานเมื่อกดแปล
-        playBellSound();
-
-        // ชุดคำสั่งแปลงภาษาแบบ Real-time
-        const rules = [
-            { req: /ฉัน|ผม|หนู|กู/g, res: 'ตู' },
-            { req: /เธอ|คุณ|มึง|แก/g, res: 'สูเจ้า' },
-            { req: /พวกเรา/g, res: 'พวกตู' },
-            { req: /พวกเธอ|พวกคุณ/g, res: 'พวกสู' },
-            { req: /รัก/g, res: 'ปฏิพัทธ์' },
-            { req: /ไป|เดิน/g, res: 'คลาไคล' },
-            { req: /ดู|มอง/g, res: 'ทัศนา' },
-            { req: /โทรศัพท์|มือถือ/g, res: 'กระดานชนวนทิพย์' },
-            { req: /อินเทอร์เน็ต|เน็ต|เว็บ/g, res: 'ข่ายใยมนตราโบราณ' },
-            { req: /กาก|พัง|ห่วย/g, res: 'มิสู้ดี' },
-            { req: /ครับ|ค่ะ|จ้า|นะ/g, res: 'แล' }
-        ];
-
-        rules.forEach(item => {
-            text = text.replace(item.req, item.res);
-        });
-
-        // เติมสร้อยคำให้ดูขลังแบบสุโขทัย
-        if (!text.endsWith('แล') && !text.endsWith('เทอญ')) {
-            text += ' ยิ่งนักแล';
-        }
-
-        document.getElementById('resultText').innerText = "คำจารึก: " + text;
-    }
-
-    // 3. ระบบเกมควิซทดสอบภูมิปัญญาคำศัพท์
-    const quizData = [
-        { q: "คำว่า 'ตู' ในภาษาโบราณ หมายถึงใคร?", a: ["ฉัน", "เธอ", "หมา"], c: 0 },
-        { q: "หากต้องการชวนเพื่อน 'ไปเที่ยว' ต้องพูดคำใด?", a: ["คลาไคล", "มุสา", "ทัศนา"], c: 0 },
-        { q: "คำว่า 'กระดานชนวนทิพย์' ตรงกับสิ่งใดในปัจจุบัน?", a: ["โทรทัศน์", "สมาร์ตโฟน", "รถยนต์"], c: 1 }
-    ];
-
-    let currentQuiz = 0;
-    let score = 0;
-
-    function loadQuiz() {
-        if (currentQuiz >= quizData.length) {
-            document.getElementById('quiz-container').innerHTML = `<b>🎉 จบการประลอง! ได้คะแนน ${score}/${quizData.length} คะแนน</b><br><button onclick="resetQuiz()">ประลองอีกครั้ง</button>`;
-            return;
-        }
-        const current = quizData[currentQuiz];
-        document.getElementById('quiz-question').innerText = `${currentQuiz + 1}. ${current.q}`;
-        const optionsDiv = document.getElementById('quiz-options');
-        optionsDiv.innerHTML = '';
-        
-        current.a.forEach((opt, index) => {
-            const div = document.createElement('div');
-            div.className = 'quiz-option';
-            div.innerText = opt;
-            div.onclick = () => checkAnswer(index);
-            optionsDiv.appendChild(div);
-        });
-    }
-
-    function checkAnswer(index) {
-        if (index === quizData[currentQuiz].c) {
-            score++;
-            alert("ถูกต้องแล้วสูเจ้า! เก่งยิ่งนัก");
-        } else {
-            alert("หามิได้! คำตอบนั้นยังไม่ถูก");
-        }
-        currentQuiz++;
-        loadQuiz();
-    }
-
-    function resetQuiz() {
-        currentQuiz = 0;
-        score = 0;
-        document.getElementById('quiz-container').innerHTML = `<p id="quiz-question" style="font-weight: bold; margin-bottom: 10px;"></p><div id="quiz-options"></div><div id="quiz-score" style="margin-top: 10px; color: #d4af37; font-weight: bold;"></div>`;
-        loadQuiz();
-    }
-
-    // เริ่มต้นทำงานควิซเมื่อโหลดหน้าเว็บ
-    loadQuiz();
-</script>
-
-</body>
-</html>
+    
